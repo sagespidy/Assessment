@@ -1,0 +1,37 @@
+---
+- name: Install EPEL repo on Linux Machine
+  yum:
+    name: epel-release
+    state: latest
+
+- name: Install Nginx on Linux Machine
+  yum:
+    name: nginx
+    state: latest
+
+- name: start Nginx service
+  systemd:
+    name: nginx
+    enabled: yes
+    state: started
+
+- name: create directory in /usr/share/nginx
+  file:
+    path: "{{ root }}"
+    state: directory
+
+- name: copy the html file to helloworld
+  copy:
+    src: index.html
+    dest: "{{ root }}"
+
+- name: Explicitly specifying named matched groups
+  replace:
+    path: /etc/nginx/nginx.conf
+    regexp: '/usr/share/nginx/html'
+    replace: '/usr/share/nginx/helloworld'
+
+- name: restart Nginx service
+  systemd:
+    name: nginx
+    state: restarted

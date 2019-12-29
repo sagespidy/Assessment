@@ -1,0 +1,2 @@
+[nginx]
+nginxserver ansible_host=${ip_address} ansible_user=centos ansible_ssh_private_key_file=../terraform/nginx.pem

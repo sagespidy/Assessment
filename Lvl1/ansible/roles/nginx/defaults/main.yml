@@ -1,0 +1,3 @@
+---
+# defaults file for nginx
+root: /usr/share/nginx/helloworld

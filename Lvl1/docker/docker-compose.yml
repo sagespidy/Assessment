@@ -1,0 +1,7 @@
+version: "3"
+services:
+  web:
+    image: sr19thjm/mynginx:nginxdeploy
+    ports:
+      - "80:80"
+      - "443:443"
